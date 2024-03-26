@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:5.0.25-focal
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/mongo/data:/data/db
+
+  reservations:
+    image: quarkus/code-with-quarkus-jvm
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
